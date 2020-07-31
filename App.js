@@ -1,29 +1,18 @@
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
  */
 
 import React, {useState} from 'react';
-import {SafeAreaView, View, Text, Button} from 'react-native';
+import {View, Text, Button, StyleSheet, ScrollView} from 'react-native';
+import TitleView from './src/main/main';
 
 function App() {
-  const [isOld, setOld] = useState(true);
   return (
-    <SafeAreaView>
-      <View>
-        <Text>Hello World</Text>
-        <Button
-          title={isOld ? '1' : '2'}
-          onPress={() => {
-            setOld(!isOld);
-          }}
-        />
-      </View>
-    </SafeAreaView>
+    <View>
+      <TitleView />
+    </View>
   );
-};
+}
 
 export default App;
