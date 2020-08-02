@@ -1,4 +1,5 @@
-package com.awesomeproject;
+package cn.skullmind.io.lesson_react_native;
+
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +11,6 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "AwesomeProject";
+    return "lesson_react_native";
   }
 }
