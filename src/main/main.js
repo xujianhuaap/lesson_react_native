@@ -21,23 +21,40 @@ class SideBar extends Component {
   }
 }
 
+class ContentView extends Component {
+  render() {
+    return (
+      <View style={styles.contentView}>
+        <Text> i am Content</Text>
+      </View>
+    );
+  }
+}
+
 const styles = StyleSheet.create({
   titleText: {
     color: 'white',
     textAlign: 'center',
     width: '100%',
-    fontSize: 18,
+    fontSize: 24,
+    fontWeight: 'bold',
   },
   titleContainer: {
     width: '100%',
-    height: '30%',
+    height: '10%',
     backgroundColor: 'black',
   },
   sideBarContainer: {
     width: '20%',
-    height: '70%',
+    height: '100%',
     backgroundColor: 'orange',
+  },
+  contentView: {
+    width: '20%',
+    height: '100%',
+    backgroundColor: 'green',
+    flexGrow: 1,
   },
 });
 
-export {TitleView, SideBar};
+export {TitleView, SideBar, ContentView};

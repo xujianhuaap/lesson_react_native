@@ -5,7 +5,7 @@
 
 import React, {useState} from 'react';
 import {View, Text, Button, StyleSheet, ScrollView, Slider} from 'react-native';
-import {TitleView, SideBar} from './src/main/main';
+import {TitleView, SideBar, ContentView} from './src/main/main';
 
 /***
  * 布局
@@ -26,9 +26,22 @@ function App() {
   return (
     <View>
       <TitleView />
-      <SideBar></SideBar>
+      <View style={styles.contentContainer}>
+        <SideBar />
+        <ContentView></ContentView>
+        <SideBar />
+      </View>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  contentContainer: {
+    width: '100%',
+    height: '90%',
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+  },
+});
 
 export default App;
