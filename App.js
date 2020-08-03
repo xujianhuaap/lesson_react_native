@@ -4,8 +4,8 @@
  */
 
 import React, {useState} from 'react';
-import {View, Text, Button, StyleSheet, ScrollView, Slider} from 'react-native';
-import {TitleView, SideBar, ContentView} from './src/main/main';
+import {View, Text, Button, StyleSheet, ScrollView} from 'react-native';
+import {TitleView, SideBar, ContentView} from './src/main/Main';
 
 /***
  * 布局

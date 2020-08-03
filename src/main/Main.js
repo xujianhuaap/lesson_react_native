@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet, FlatList, Button} from 'react-native';
+import TopNavigationBar from './TitleBar';
 
 class TitleView extends Component {
   render() {
     return (
       <View style={styles.titleContainer}>
-        <Text style={styles.titleText}>i am title</Text>
+        <TopNavigationBar />
       </View>
     );
   }
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
     color: 'white',
     textAlign: 'center',
     width: '100%',
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: 'bold',
   },
   titleContainer: {
