@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   sideBarContainer: {
-    width: '45%',
+    width: '35%',
     height: '100%',
     backgroundColor: '#ddddd3',
   },

@@ -4,7 +4,9 @@ import {SectionList, Text, View, StyleSheet} from 'react-native';
 const ItemView = ({title}) => {
   return (
     <View style={styles.sectionItem}>
-      <Text style={styles.sectionItemText}>{title}</Text>
+      <Text numberOfLines={1} ellipsizeMode="middle">
+        {title}
+      </Text>
     </View>
   );
 };
@@ -80,11 +82,6 @@ const styles = StyleSheet.create({
     paddingBottom: 2,
     paddingTop: 2,
     fontSize: 21,
-  },
-  sectionItemText: {
-    width: '100%',
-    ellipsizeMode: 'middle',
-    numberOfLines: 1,
   },
 });
 export default RightBar;
