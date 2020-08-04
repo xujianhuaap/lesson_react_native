@@ -58,25 +58,28 @@ class ItemView extends Component {
 
   render() {
     return (
-      <View style={styles.titleNavigationItem}>
+      <View>
         <View style={{width: '100%', marginLeft: '2%', marginRight: '2%'}}>
           <Text
-            style={
-              this.state.item.selected
-                ? styles.titleTextSelect
-                : styles.titleText
-            }
-            color={'black'}
+            style={[
+              {
+                color: this.state.item.selected ? '#48D1CC' : 'white',
+              },
+              styles.titleText,
+            ]}
             onPress={this.clickItem}>
             {this.props.item.title}
           </Text>
         </View>
         <View
-          style={
-            this.state.item.selected
-              ? styles.titleNavigationItemDividerSelect
-              : styles.titleNavigationItemDivider
-          }
+          style={[
+            {
+              backgroundColor: this.state.item.selected
+                ? '#48D1CC'
+                : 'transparent',
+            },
+            styles.titleNavigationItemDivider,
+          ]}
         />
       </View>
     );
@@ -90,19 +93,7 @@ const styles = StyleSheet.create({
   titleNavigationColumn: {
     justifyContent: 'space-around',
   },
-  titleNavigationItem: {
-    padding: 0,
-    margin: 0,
-  },
   titleText: {
-    color: 'white',
-    textAlign: 'center',
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-
-  titleTextSelect: {
-    color: '#48D1CC',
     textAlign: 'center',
     fontSize: 20,
     fontWeight: 'bold',
@@ -111,12 +102,6 @@ const styles = StyleSheet.create({
   titleNavigationItemDivider: {
     width: '100%',
     height: 2,
-    backgroundColor: 'transparent',
-  },
-  titleNavigationItemDividerSelect: {
-    width: '100%',
-    height: 2,
-    backgroundColor: '#48D1CC',
   },
 });
 

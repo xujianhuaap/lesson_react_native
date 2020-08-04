@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Text, View, StyleSheet, FlatList, Button} from 'react-native';
-import TopNavigationBar from './TitleBar';
+import TopNavigationBar from './TopBar';
 
 class TitleView extends Component {
   render() {
