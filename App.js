@@ -29,7 +29,6 @@ function App() {
       <View style={styles.contentContainer}>
         <SideBar />
         <ContentView />
-        <SideBar />
       </View>
     </View>
   );

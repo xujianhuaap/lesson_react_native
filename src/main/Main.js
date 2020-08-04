@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Text, View, StyleSheet, FlatList, Button} from 'react-native';
 import TopNavigationBar from './TopBar';
+import RightBar from './RightBar';
 
 class TitleView extends Component {
   render() {
@@ -16,7 +17,7 @@ class SideBar extends Component {
   render() {
     return (
       <View style={styles.sideBarContainer}>
-        <Text> i am side bar</Text>
+        <RightBar></RightBar>
       </View>
     );
   }
@@ -41,12 +42,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   sideBarContainer: {
-    width: '20%',
+    width: '45%',
     height: '100%',
-    backgroundColor: 'orange',
+    backgroundColor: '#ddddd3',
   },
   contentView: {
-    width: '20%',
     height: '100%',
     backgroundColor: 'green',
     flexGrow: 1,
