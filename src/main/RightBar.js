@@ -1,13 +1,25 @@
 import React, {Component} from 'react';
-import {SectionList, Text, View, StyleSheet} from 'react-native';
+import {
+  SectionList,
+  Text,
+  View,
+  TouchableHighlight,
+  StyleSheet,
+} from 'react-native';
 
 const ItemView = ({title}) => {
   return (
-    <View style={styles.sectionItem}>
-      <Text numberOfLines={1} ellipsizeMode="middle">
-        {title}
-      </Text>
-    </View>
+    <TouchableHighlight
+      onPress={console.log('123')}
+      style={styles.sectionItem}
+      activeOpacity={0.3}
+      underlayColor="green">
+      <View>
+        <Text numberOfLines={1} ellipsizeMode="middle">
+          {title}
+        </Text>
+      </View>
+    </TouchableHighlight>
   );
 };
 
@@ -82,6 +94,7 @@ const styles = StyleSheet.create({
     paddingBottom: 2,
     paddingTop: 2,
     fontSize: 21,
+    backgroundColor: 'red',
   },
 });
 export default RightBar;
