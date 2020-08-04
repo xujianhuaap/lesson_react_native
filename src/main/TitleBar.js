@@ -10,24 +10,36 @@ class TopNavigationBar extends Component {
     {title: '热更新', id: '05', selected: false},
     {title: '关于', id: '06', selected: false},
   ];
+
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      data: this.TitleData,
+    };
+  }
+
   render() {
     const renderItem = ({item}) => {
       return <ItemView item={item} handleData={this.handleData} />;
     };
     return (
-      <FlatList
-        data={this.TitleData}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-        numColumns={6}
-        columnWrapperStyle={styles.titleNavigationColumn}
-        style={styles.titleNavigationContainer}
-      />
+      <View style={styles.titleNavigationContainer}>
+        <FlatList
+          data={this.TitleData}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+          numColumns={6}
+          columnWrapperStyle={styles.titleNavigationColumn}
+        />
+      </View>
     );
   }
   handleData = (id) => {
     this.TitleData.map((item) => {
       item.selected = id === item.id;
+    });
+    this.setState({
+      data: this.TitleData,
     });
   };
 }
@@ -47,7 +59,7 @@ class ItemView extends Component {
   render() {
     return (
       <View style={styles.titleNavigationItem}>
-        <View style={{width: '100%'}}>
+        <View style={{width: '100%', marginLeft: '2%', marginRight: '2%'}}>
           <Text
             style={
               this.state.item.selected
@@ -74,13 +86,9 @@ class ItemView extends Component {
 const styles = StyleSheet.create({
   titleNavigationContainer: {
     width: '100%',
-    height: '10%',
   },
   titleNavigationColumn: {
-    width: '100%',
-    flexDirection: 'row',
     justifyContent: 'space-around',
-    padding: 10,
   },
   titleNavigationItem: {
     padding: 0,
@@ -91,26 +99,24 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 20,
     fontWeight: 'bold',
-    marginLeft: 10,
-    marginRight: 10,
   },
 
   titleTextSelect: {
-    color: 'blue',
+    color: '#48D1CC',
     textAlign: 'center',
     fontSize: 20,
     fontWeight: 'bold',
-    marginLeft: 10,
-    marginRight: 10,
   },
 
   titleNavigationItemDivider: {
-    height: '5%',
-    backgroundColor: 'red',
+    width: '100%',
+    height: 2,
+    backgroundColor: 'transparent',
   },
   titleNavigationItemDividerSelect: {
-    height: '5%',
-    backgroundColor: 'green',
+    width: '100%',
+    height: 2,
+    backgroundColor: '#48D1CC',
   },
 });
 

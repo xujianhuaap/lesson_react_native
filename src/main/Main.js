@@ -5,7 +5,7 @@ import TopNavigationBar from './TitleBar';
 class TitleView extends Component {
   render() {
     return (
-      <View style={styles.titleContainer}>
+      <View style={this.props.style}>
         <TopNavigationBar />
       </View>
     );
@@ -39,11 +39,6 @@ const styles = StyleSheet.create({
     width: '100%',
     fontSize: 20,
     fontWeight: 'bold',
-  },
-  titleContainer: {
-    width: '100%',
-    height: '10%',
-    backgroundColor: 'black',
   },
   sideBarContainer: {
     width: '20%',

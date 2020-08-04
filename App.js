@@ -25,10 +25,10 @@ import {TitleView, SideBar, ContentView} from './src/main/Main';
 function App() {
   return (
     <View>
-      <TitleView />
+      <TitleView style={styles.titleView} />
       <View style={styles.contentContainer}>
         <SideBar />
-        <ContentView></ContentView>
+        <ContentView />
         <SideBar />
       </View>
     </View>
@@ -36,6 +36,12 @@ function App() {
 }
 
 const styles = StyleSheet.create({
+  titleView: {
+    width: '100%',
+    height: '10%',
+    justifyContent: 'flex-end',
+    backgroundColor: 'black',
+  },
   contentContainer: {
     width: '100%',
     height: '90%',
