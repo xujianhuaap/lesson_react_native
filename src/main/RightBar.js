@@ -75,7 +75,7 @@ class RightBar extends Component {
   handleSectionHeader = ({section}) => {
     const currentData = this.state.data;
     currentData.map(({item, index}) => {
-      if (item === section) {
+      if (item.title === section.title) {
         if (section.show) {
           item.data = [];
         } else {
