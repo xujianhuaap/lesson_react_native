@@ -9,17 +9,11 @@ import {
 
 const ItemView = ({title}) => {
   return (
-    <TouchableHighlight
-      onPress={console.log('123')}
-      style={styles.sectionItem}
-      activeOpacity={0.3}
-      underlayColor="green">
-      <View>
-        <Text numberOfLines={1} ellipsizeMode="middle">
-          {title}
-        </Text>
-      </View>
-    </TouchableHighlight>
+    <View style={styles.sectionItem}>
+      <Text numberOfLines={1} ellipsizeMode="middle">
+        {title}
+      </Text>
+    </View>
   );
 };
 
@@ -74,7 +68,9 @@ class RightBar extends Component {
         <SectionList
           sections={this.DATA}
           keyExtractor={(item, index) => item + index}
-          renderItem={({item}) => <ItemView title={item.title} />}
+          renderItem={({item}) => (
+            <ItemView title={item.title} />
+          )}
           renderSectionHeader={({section: {title}}) => (
             <Text style={styles.sectionHeader}>{title}</Text>
           )}
@@ -94,7 +90,6 @@ const styles = StyleSheet.create({
     paddingBottom: 2,
     paddingTop: 2,
     fontSize: 21,
-    backgroundColor: 'red',
   },
 });
 export default RightBar;
