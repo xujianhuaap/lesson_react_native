@@ -3,20 +3,23 @@ import {
   SectionList,
   Text,
   View,
-  TouchableHighlight,
+  TouchableOpacity,
   StyleSheet,
 } from 'react-native';
 
-const ItemView = ({title}) => {
-  return (
-    <View style={styles.sectionItem}>
-      <Text numberOfLines={1} ellipsizeMode="middle">
-        {title}
-      </Text>
-    </View>
-  );
-};
-
+class ItemView1 extends Component {
+  render() {
+    return (
+      <TouchableOpacity onPress={() => null}>
+        <View style={styles.sectionItem}>
+          <Text numberOfLines={1} ellipsizeMode="middle">
+            {this.props.index + '.' + this.props.title}
+          </Text>
+        </View>
+      </TouchableOpacity>
+    );
+  }
+}
 class RightBar extends Component {
   DATA = [
     {
@@ -61,15 +64,14 @@ class RightBar extends Component {
       ],
     },
   ];
-
   render() {
     return (
       <View>
         <SectionList
           sections={this.DATA}
           keyExtractor={(item, index) => item + index}
-          renderItem={({item}) => (
-            <ItemView title={item.title} />
+          renderItem={({item, index}) => (
+            <ItemView1 title={item.title} index={index} />
           )}
           renderSectionHeader={({section: {title}}) => (
             <Text style={styles.sectionHeader}>{title}</Text>
