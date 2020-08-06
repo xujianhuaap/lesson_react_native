@@ -5,9 +5,13 @@ import {
   View,
   TouchableOpacity,
   StyleSheet,
+  Animated,
 } from 'react-native';
 import DATA from '../json/RightBar.json';
+import SectionICon from '../res/drawable/icon_arrow_bottom.png';
+
 const DATA1 = JSON.parse(JSON.stringify(DATA));
+
 class ItemView extends Component {
   render() {
     return (
@@ -21,6 +25,34 @@ class ItemView extends Component {
     );
   }
 }
+
+class SectionHeaderIcon extends Component {
+  render() {
+    return (
+      <View>
+        <Animated.Image source={SectionICon} style={styles.sectionHeaderIcon} />
+      </View>
+    );
+  }
+}
+
+class SectionHeader extends Component {
+  press = () => {
+    const section = this.props.section;
+    this.props.handleSectionHeader({section});
+  };
+  render() {
+    return (
+      <View style={styles.sectionHeader}>
+        <Text style={styles.sectionHeaderText} onPress={this.press}>
+          {this.props.section.title}
+        </Text>
+        <SectionHeaderIcon></SectionHeaderIcon>
+      </View>
+    );
+  }
+}
+
 class RightBar extends Component {
   constructor(props, context) {
     super(props, context);
@@ -68,11 +100,10 @@ class RightBar extends Component {
             <ItemView title={item.title} index={index} />
           )}
           renderSectionHeader={({section}) => (
-            <Text
-              style={styles.sectionHeader}
-              onPress={() => this.handleSectionHeader({section})}>
-              {section.title}
-            </Text>
+            <SectionHeader
+              section={section}
+              handleSectionHeader={this.handleSectionHeader}
+            />
           )}
         />
       </View>
@@ -82,8 +113,16 @@ class RightBar extends Component {
 
 const styles = StyleSheet.create({
   sectionHeader: {
+    flexDirection: 'row',
+  },
+  sectionHeaderText: {
     fontSize: 22,
     fontWeight: 'bold',
+  },
+  sectionHeaderIcon: {
+    width: 15,
+    height: 15,
+    alignSelf: 'center',
   },
   sectionItem: {
     paddingLeft: 10,
@@ -92,4 +131,5 @@ const styles = StyleSheet.create({
     fontSize: 21,
   },
 });
+
 export default RightBar;
