@@ -1,0 +1,47 @@
+[
+  {
+   "title": "核心组件",
+    "show": true,
+    "index": 0,
+    "data": [
+      {"title": "核心组件和api"},
+      {"title": "ActivityIndicator"},
+      {"title": "Button"},
+      {"title": "FlatList"},
+      {"title": "Image"},
+      {"title": "ImageBackground"},
+      {"title": "KeyboardAvoidingView"},
+      {"title": "Modal"},
+      {"title": "Pressable"},
+      {"title": "RefreshControl"},
+      {"title": "SafeAreaView"},
+      {"title": "ScrollView"},
+      {"title": "SectionList"},
+      {"title": "StatusBar"},
+      {"title": "Switch"},
+      {"title": "Text"},
+      {"title": "TextInput"},
+      {"title": "TouchableHighLight"},
+      {"title": "TouchableOpacity"},
+      {"title": "TouchableWithoutFeedback"},
+      {"title": "View"},
+      {"title": "VirtualizedList"},
+      {"title": "Android组件"},
+      {"title": "DrawerLayoutAndroid"},
+      {"title": "TouchableNativeFeedback"},
+      {"title": "IOS组件"},
+      {"title": "InputAccessoryView"}
+    ]
+  },
+  {
+   "title": "属性",
+    "show": true,
+    "index": 1,
+    "data": [
+      {"title": "Image样式属性"},
+      {"title": "布局属性"},
+      {"title": "阴影样式属性"},
+      {"title": "View样式属性"}
+    ]
+  }
+]
