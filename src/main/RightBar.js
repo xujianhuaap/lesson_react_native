@@ -8,7 +8,7 @@ import {
   Animated,
 } from 'react-native';
 import DATA from '../json/RightBar.json';
-import SectionICon from '../res/drawable/icon_arrow_bottom.png';
+import SectionICon from '../res/drawable/icon_arrow_down.png';
 
 const DATA1 = JSON.parse(JSON.stringify(DATA));
 
@@ -18,7 +18,7 @@ class ItemView extends Component {
       <TouchableOpacity onPress={() => null}>
         <View style={styles.sectionItem}>
           <Text numberOfLines={1} ellipsizeMode="middle">
-            {this.props.index + '.' + this.props.title}
+            {this.props.index + 1 + '.' + this.props.title}
           </Text>
         </View>
       </TouchableOpacity>
@@ -27,19 +27,48 @@ class ItemView extends Component {
 }
 
 class SectionHeaderIcon extends Component {
+  constructor(props, context) {
+    super(props, context);
+  }
+
   render() {
+    let rotate = this.getRotate();
     return (
-      <View>
-        <Animated.Image source={SectionICon} style={styles.sectionHeaderIcon} />
+      <View style={styles.sectionHeaderIcon}>
+        <Animated.Image
+          source={SectionICon}
+          style={{width: 25, height: 25, transform: [{rotateZ: rotate}]}}
+        />
       </View>
     );
+  }
+
+  getRotate() {
+    const isShow = this.props.isShow;
+    let rotate;
+    if (isShow) {
+      rotate = '0deg';
+    } else {
+      rotate = '180deg';
+    }
+    return rotate;
   }
 }
 
 class SectionHeader extends Component {
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      isShow: true,
+    };
+  }
+
   press = () => {
     const section = this.props.section;
     this.props.handleSectionHeader({section});
+    this.setState({
+      isShow: section.show,
+    });
   };
   render() {
     return (
@@ -47,7 +76,7 @@ class SectionHeader extends Component {
         <Text style={styles.sectionHeaderText} onPress={this.press}>
           {this.props.section.title}
         </Text>
-        <SectionHeaderIcon></SectionHeaderIcon>
+        <SectionHeaderIcon isShow={this.state.isShow} />
       </View>
     );
   }
@@ -114,14 +143,13 @@ class RightBar extends Component {
 const styles = StyleSheet.create({
   sectionHeader: {
     flexDirection: 'row',
+    alignContent: 'center',
   },
   sectionHeaderText: {
     fontSize: 22,
     fontWeight: 'bold',
   },
   sectionHeaderIcon: {
-    width: 15,
-    height: 15,
     alignSelf: 'center',
   },
   sectionItem: {
