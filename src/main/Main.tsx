@@ -1,9 +1,13 @@
 import React, {Component} from 'react';
-import {Text, View, StyleSheet, FlatList, Button} from 'react-native';
+import {Text, View, StyleSheet} from 'react-native';
 import TopNavigationBar from './TopBar';
 import RightBar from './RightBar';
 
-class TitleView extends Component {
+export interface Props {
+  style: {};
+}
+
+class TitleView extends Component<Props> {
   render() {
     return (
       <View style={this.props.style}>

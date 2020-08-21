@@ -1,8 +1,31 @@
-import React, {Component, useState} from 'react';
-import {Text, View, StyleSheet, FlatList, Button, LogBox} from 'react-native';
+import React, {Component} from 'react';
+import {
+  Text,
+  View,
+  StyleSheet,
+  FlatList,
+  ListRenderItemInfo,
+} from 'react-native';
+interface ItemData {
+  title: string;
+  id: string;
+  selected: boolean;
+}
 
-class TopNavigationBar extends Component {
-  TitleData = [
+interface TopNavigationBarProps {
+  item: {};
+  handleData: (id: string) => void;
+}
+
+interface TopNavigationBarState {
+  data: Array<ItemData>;
+}
+
+class TopNavigationBar extends Component<
+  TopNavigationBarProps,
+  TopNavigationBarState
+> {
+  TitleData: Array<ItemData> = [
     {title: '文档', id: '01', selected: true},
     {title: '组件', id: '02', selected: false},
     {title: 'API', id: '03', selected: false},
@@ -11,7 +34,7 @@ class TopNavigationBar extends Component {
     {title: '关于', id: '06', selected: false},
   ];
 
-  constructor(props, context) {
+  constructor(props: TopNavigationBarProps, context: any) {
     super(props, context);
     this.state = {
       data: this.TitleData,
@@ -19,8 +42,8 @@ class TopNavigationBar extends Component {
   }
 
   render() {
-    const renderItem = ({item}) => {
-      return <ItemView item={item} handleData={this.handleData} />;
+    let renderItem = (item: ListRenderItemInfo<ItemData>) => {
+      return <ItemView item={item.item} handleData={this.handleData} />;
     };
     return (
       <View style={styles.titleNavigationContainer}>
@@ -34,7 +57,7 @@ class TopNavigationBar extends Component {
       </View>
     );
   }
-  handleData = (id) => {
+  handleData = (id: string) => {
     this.TitleData.map((item) => {
       item.selected = id === item.id;
     });
@@ -44,8 +67,17 @@ class TopNavigationBar extends Component {
   };
 }
 
-class ItemView extends Component {
-  constructor(props, context) {
+interface ItemViewProps {
+  item: ItemData;
+  handleData: (id: string) => void;
+}
+
+interface ItemViewState {
+  item: ItemData;
+}
+
+class ItemView extends Component<ItemViewProps, ItemViewState> {
+  constructor(props: ItemViewProps, context: any) {
     super(props, context);
     this.state = {
       item: this.props.item,

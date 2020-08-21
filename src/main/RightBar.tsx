@@ -6,13 +6,40 @@ import {
   TouchableOpacity,
   StyleSheet,
   Animated,
+  SectionListData,
 } from 'react-native';
+
 import DATA from '../json/RightBar.json';
 import SectionICon from '../res/drawable/icon_arrow_down.png';
 
-const DATA1 = JSON.parse(JSON.stringify(DATA));
+const DATA1: Array<Section<Chapter>> = JSON.parse(JSON.stringify(DATA));
 
-class ItemView extends Component {
+class Section<D> {
+  title: string;
+  index: number;
+  show: boolean;
+  data: Array<D>;
+
+  constructor(title: string, index: number, show: boolean, data: Array<D>) {
+    this.title = title;
+    this.index = index;
+    this.show = show;
+    this.data = data;
+  }
+}
+
+class Chapter {
+  title: string;
+  constructor(title: string) {
+    this.title = title;
+  }
+}
+
+interface ItemViewProps {
+  index: number;
+  title: string;
+}
+class ItemView extends Component<ItemViewProps> {
   render() {
     return (
       <TouchableOpacity onPress={() => null}>
@@ -26,8 +53,12 @@ class ItemView extends Component {
   }
 }
 
-class SectionHeaderIcon extends Component {
-  constructor(props, context) {
+interface SectionHeaderIconProps {
+  isShow: boolean;
+}
+
+class SectionHeaderIcon extends Component<SectionHeaderIconProps> {
+  constructor(props: SectionHeaderIconProps, context: any) {
     super(props, context);
   }
 
@@ -55,8 +86,16 @@ class SectionHeaderIcon extends Component {
   }
 }
 
-class SectionHeader extends Component {
-  constructor(props, context) {
+interface SectionHeaderProps {
+  section: Section<Chapter>;
+  handleSectionHeader: (section: Section<Chapter>) => void;
+}
+
+interface SectionHeaderState {
+  isShow: boolean;
+}
+class SectionHeader extends Component<SectionHeaderProps, SectionHeaderState> {
+  constructor(props: SectionHeaderProps, context: any) {
     super(props, context);
     this.state = {
       isShow: true,
@@ -65,7 +104,7 @@ class SectionHeader extends Component {
 
   press = () => {
     const section = this.props.section;
-    this.props.handleSectionHeader({section});
+    this.props.handleSectionHeader(section);
     this.setState({
       isShow: section.show,
     });
@@ -82,8 +121,13 @@ class SectionHeader extends Component {
   }
 }
 
-class RightBar extends Component {
-  constructor(props, context) {
+interface RightBarProps {}
+
+interface RightBarState {
+  data: Array<Section<Chapter>>;
+}
+class RightBar extends Component<RightBarProps, RightBarState> {
+  constructor(props: RightBarProps, context: any) {
     super(props, context);
     this.state = {
       data: [],
@@ -91,14 +135,14 @@ class RightBar extends Component {
   }
 
   componentDidMount() {
-    let dataCopy = [];
+    let dataCopy = Array<Section<Chapter>>();
     Object.assign(dataCopy, DATA);
     this.setState({
       data: dataCopy,
     });
   }
 
-  handleSectionHeader = ({section}) => {
+  handleSectionHeader = (section: Section<Chapter>) => {
     let currentData = this.state.data;
     for (let index = 0; index < currentData.length; index++) {
       const item = currentData[index];
@@ -124,13 +168,13 @@ class RightBar extends Component {
       <View>
         <SectionList
           sections={this.state.data}
-          keyExtractor={(item, index) => item + index}
+          keyExtractor={(item, index) => item.title + index}
           renderItem={({item, index}) => (
             <ItemView title={item.title} index={index} />
           )}
-          renderSectionHeader={({section}) => (
+          renderSectionHeader={(info: {section: SectionListData<Chapter>}) => (
             <SectionHeader
-              section={section}
+              section={info.section as Section<Chapter>}
               handleSectionHeader={this.handleSectionHeader}
             />
           )}

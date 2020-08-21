@@ -3,8 +3,8 @@
  * https://github.com/facebook/react-native
  */
 
-import React, {useState} from 'react';
-import {View, Text, Button, StyleSheet, ScrollView} from 'react-native';
+import React from 'react';
+import {View, StyleSheet} from 'react-native';
 import {TitleView, SideBar, ContentView} from './src/main/Main';
 
 /***
