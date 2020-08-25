@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import TopNavigationBar from './TopBar';
 import RightBar from './RightBar';
+import {useNavigation} from '@react-navigation/native';
+import {NavigationProp} from 'react-navigation';
 
 export interface Props {
   style: {};
@@ -27,11 +29,16 @@ class SideBar extends Component {
   }
 }
 
-class ContentView extends Component {
+interface ContextViewPros {
+  navigation: NavigationProp;
+}
+class ContentView extends Component<ContextViewPros> {
   render() {
     return (
       <View style={styles.contentView}>
-        <Text> i am Content</Text>
+        <Text onPress={() => this.props.navigation.navigate('chapter')}>
+          i am Content
+        </Text>
       </View>
     );
   }
