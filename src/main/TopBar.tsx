@@ -13,8 +13,8 @@ interface ItemData {
 }
 
 interface TopNavigationBarProps {
-  item: {};
-  handleData: (id: string) => void;
+  item?: {};
+  handleData?: (id: string) => void;
 }
 
 interface TopNavigationBarState {
