@@ -13,9 +13,25 @@ const Stack = createStackNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator headerMode="none">
-        <Stack.Screen name="main" component={MainScreen} />
-        <Stack.Screen name="chapter" component={ChapterScreen} />
+      <Stack.Navigator
+        headerMode="screen"
+        screenOptions={{
+          title: '',
+          headerStyle: {backgroundColor: 'black'},
+          headerStatusBarHeight: 0,
+          headerTitleAlign: 'center',
+          headerTintColor: 'white',
+        }}>
+        <Stack.Screen
+          name="main"
+          component={MainScreen}
+          options={{title: 'React Learn'}}
+        />
+        <Stack.Screen
+          name="chapter"
+          component={ChapterScreen}
+          options={{title: 'Chapter Detail'}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

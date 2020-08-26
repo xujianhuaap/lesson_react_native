@@ -3,7 +3,7 @@ import {Text, View, StyleSheet} from 'react-native';
 import TopNavigationBar from './TopBar';
 import RightBar from './RightBar';
 import {useNavigation, useRoute} from '@react-navigation/native';
-import {navigateChapter, RouteParams} from "../Navigator";
+import {navigateChapter, RouteParams} from '../Navigator';
 
 interface Props {
   style: {};
@@ -62,7 +62,6 @@ class ContentView extends Component<ContextViewPros> {
  * 3> justifyContent 是对于多列的子组件,又有意义,主要控制列之间的距离.
  */
 
-
 export function MainScreen() {
   let navigation = useNavigation();
   let params = useRoute().params;
@@ -83,13 +82,13 @@ export function MainScreen() {
 const styles = StyleSheet.create({
   titleView: {
     width: '100%',
-    height: '10%',
+    height: '5%',
     justifyContent: 'flex-end',
     backgroundColor: 'black',
   },
   contentContainer: {
     width: '100%',
-    height: '90%',
+    height: '95%',
     flexWrap: 'wrap',
     flexDirection: 'row',
   },
