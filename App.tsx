@@ -9,16 +9,15 @@ import {NavigationContainer} from '@react-navigation/native';
 import {MainScreen} from './src/main/Main';
 import {ChapterScreen} from './src/Chapter/Chapter';
 
-const Stack = createStackNavigator<RootStackParamList>();
+const Stack = createStackNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator headerMode="none">
         <Stack.Screen name="main" component={MainScreen} />
         <Stack.Screen name="chapter" component={ChapterScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
 export default App;

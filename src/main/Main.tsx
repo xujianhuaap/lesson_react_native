@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import TopNavigationBar from './TopBar';
 import RightBar from './RightBar';
-import {useNavigation} from '@react-navigation/native';
-import {NavigationProp} from 'react-navigation';
+import {useNavigation, useRoute} from '@react-navigation/native';
+import {navigateChapter, RouteParams} from "../Navigator";
 
-export interface Props {
+interface Props {
   style: {};
 }
 
@@ -30,15 +30,17 @@ class SideBar extends Component {
 }
 
 interface ContextViewPros {
-  navigation: NavigationProp;
+  navigation: any;
+  info?: string;
 }
 class ContentView extends Component<ContextViewPros> {
   render() {
     return (
       <View style={styles.contentView}>
-        <Text onPress={() => this.props.navigation.navigate('chapter')}>
+        <Text onPress={() => navigateChapter(this.props.navigation)}>
           i am Content
         </Text>
+        <Text>{this.props!.info}</Text>
       </View>
     );
   }
@@ -60,13 +62,20 @@ class ContentView extends Component<ContextViewPros> {
  * 3> justifyContent 是对于多列的子组件,又有意义,主要控制列之间的距离.
  */
 
+
 export function MainScreen() {
+  let navigation = useNavigation();
+  let params = useRoute().params;
+  let info;
+  if (params !== undefined) {
+    info = (params as RouteParams).info;
+  }
   return (
     <View>
       <TitleView style={styles.titleView} />
       <View style={styles.contentContainer}>
         <SideBar />
-        <ContentView />
+        <ContentView navigation={navigation} info={info} />
       </View>
     </View>
   );
