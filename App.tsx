@@ -7,7 +7,7 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 import {MainScreen} from './src/main/Main';
-import {ChapterScreen} from './src/Chapter/Chapter';
+import {ChapterScreen} from './src/chapter/Chapter';
 
 const Stack = createStackNavigator();
 function App() {
@@ -30,7 +30,9 @@ function App() {
         <Stack.Screen
           name="chapter"
           component={ChapterScreen}
-          options={{title: 'Chapter Detail'}}
+          options={{
+            title: 'chapter Detail',
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>
