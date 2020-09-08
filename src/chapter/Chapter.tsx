@@ -19,10 +19,14 @@ class ChapterView extends Component<ChapterViewProps, ChapterViewState> {
     return (
       <View>
         <Text
-          onPress={() =>
-            navigateMain(this.props.navigation, {info: 'i am from chapter'})
-          }>
-          chapter
+          onPress={() => {
+            let navigation = this.props.navigation;
+            navigation.setOptions({
+              headerTitle: () => <TopBar title={'Learn Chapter leaving...'} />,
+            });
+            navigateMain(this.props.navigation, {info: 'i am from chapter'});
+          }}>
+          i am chapter
         </Text>
       </View>
     );
@@ -36,15 +40,22 @@ interface TopBarProps {
 class TopBar extends Component<TopBarProps> {
   render() {
     return (
-      <View>
-        <View>
+      <View style={{flexDirection: 'row'}}>
+        <View style={{width: 25, height: 25}}>
           <Image
             source={Logo}
             style={{width: 25, height: 25, tintColor: 'white'}}
           />
         </View>
-        <View>
-          <Text style={{color: 'white'}}>{this.props.title}</Text>
+        <View style={{height: 25, justifyContent: 'center'}}>
+          <Text
+            style={{
+              color: 'white',
+              textAlign: 'center',
+              marginLeft: 2,
+            }}>
+            {this.props.title}
+          </Text>
         </View>
       </View>
     );
