@@ -1,6 +1,6 @@
 import {Image, Text, View} from 'react-native';
 import React, {Component} from 'react';
-import {useNavigation, useRoute} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import {navigateMain} from '../Navigator';
 import Logo from '../res/drawable/icon_chapter.png';
 
@@ -10,11 +10,20 @@ interface ChapterViewProps {
 
 interface ChapterViewState {
   count: number;
+  timerHandle: undefined|NodeJS.Timeout;
 }
 class ChapterView extends Component<ChapterViewProps, ChapterViewState> {
+  timerHandler = (..._: any[]) => {
+    navigateMain(this.props.navigation, {info: 'i am from chapter'});
+  };
   constructor(props: ChapterViewProps, context: any) {
     super(props, context);
   }
+
+  componentDidMount(): void {
+    this.setState({count: 0, timerHandle: undefined});
+  }
+
   render() {
     return (
       <View>
@@ -24,12 +33,19 @@ class ChapterView extends Component<ChapterViewProps, ChapterViewState> {
             navigation.setOptions({
               headerTitle: () => <TopBar title={'Learn Chapter leaving...'} />,
             });
-            navigateMain(this.props.navigation, {info: 'i am from chapter'});
+            let handle = setTimeout(this.timerHandler, 300);
+            this.setState({timerHandle: handle});
           }}>
           i am chapter
         </Text>
       </View>
     );
+  }
+
+  componentWillUnmount(): void {
+    if (this.state.timerHandle !== undefined) {
+      clearTimeout(this.state.timerHandle);
+    }
   }
 }
 
@@ -63,8 +79,6 @@ class TopBar extends Component<TopBarProps> {
 }
 export function ChapterScreen() {
   let navigation = useNavigation();
-  let params = useRoute().params;
-  console.log(params);
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerTitle: () => <TopBar title={'Learn Chapter'} />,
