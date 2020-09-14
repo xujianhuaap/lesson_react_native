@@ -23,7 +23,7 @@ class ChapterView extends Component<ChapterViewProps, ChapterViewState> {
 
   componentDidMount(): void {
     this.setState({count: 0, timerHandle: undefined});
-    Net.getData('/bookProcess/order/account/getSvcPassengerList');
+    Net.getData('/news/topics');
   }
 
   render() {
