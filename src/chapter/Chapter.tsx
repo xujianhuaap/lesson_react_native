@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {navigateMain} from '../Navigator';
 import Logo from '../res/drawable/icon_chapter.png';
+import {Net} from '../utils/net/Net';
 
 interface ChapterViewProps {
   navigation: any;
@@ -10,7 +11,7 @@ interface ChapterViewProps {
 
 interface ChapterViewState {
   count: number;
-  timerHandle: undefined|NodeJS.Timeout;
+  timerHandle: undefined | NodeJS.Timeout;
 }
 class ChapterView extends Component<ChapterViewProps, ChapterViewState> {
   timerHandler = (..._: any[]) => {
@@ -22,6 +23,7 @@ class ChapterView extends Component<ChapterViewProps, ChapterViewState> {
 
   componentDidMount(): void {
     this.setState({count: 0, timerHandle: undefined});
+    Net.getData('/bookProcess/order/account/getSvcPassengerList');
   }
 
   render() {
