@@ -3,6 +3,8 @@ import React, {Component} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {navigateMain} from '../Navigator';
 import Logo from '../res/drawable/icon_chapter.png';
+import {URL_GREEN_MILEAGE} from '../res/url/Urls';
+import {Resp} from './dto/Bean';
 import {Net} from '../utils/net/Net';
 
 interface ChapterViewProps {
@@ -10,6 +12,7 @@ interface ChapterViewProps {
 }
 
 interface ChapterViewState {
+  greenMileage: Resp | undefined;
   count: number;
   timerHandle: undefined | NodeJS.Timeout;
 }
@@ -22,8 +25,10 @@ class ChapterView extends Component<ChapterViewProps, ChapterViewState> {
   }
 
   componentDidMount(): void {
-    this.setState({count: 0, timerHandle: undefined});
-    Net.getData('/news/topics');
+    this.setState({count: 0, timerHandle: undefined, greenMileage: undefined});
+    Net.getData<any, Resp>(URL_GREEN_MILEAGE, {}, (resp: Resp) => {
+      this.setState({greenMileage: resp});
+    });
   }
 
   render() {
@@ -38,7 +43,9 @@ class ChapterView extends Component<ChapterViewProps, ChapterViewState> {
             let handle = setTimeout(this.timerHandler, 300);
             this.setState({timerHandle: handle});
           }}>
-          i am chapter
+          {this !== null && this.state !== null && this.state.greenMileage !== undefined
+            ? JSON.stringify(this.state.greenMileage)
+            : '======='}
         </Text>
       </View>
     );
