@@ -8,6 +8,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 import {MainScreen} from './src/main/Main';
 import {ChapterScreen} from './src/chapter/Chapter';
+import {LoginScreen} from './src/login/Login';
 
 const Stack = createStackNavigator();
 function App() {
@@ -33,6 +34,11 @@ function App() {
           options={{
             title: 'chapter Detail',
           }}
+        />
+        <Stack.Screen
+          name="login"
+          component={LoginScreen}
+          options={{title: 'Login or Register'}}
         />
       </Stack.Navigator>
     </NavigationContainer>

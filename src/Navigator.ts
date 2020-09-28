@@ -9,3 +9,7 @@ export function navigateMain(navigation: any, params?: RouteParams) {
 export function navigateChapter(navigation: any, params?: RouteParams) {
   navigation.navigate('chapter', params);
 }
+
+export function navigateLogin(navigation: any, params?: RouteParams) {
+  navigation.navigate('login', params);
+}

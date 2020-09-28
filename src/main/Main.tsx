@@ -3,7 +3,7 @@ import {Text, View, StyleSheet} from 'react-native';
 import TopNavigationBar from './TopBar';
 import RightBar from './RightBar';
 import {useNavigation, useRoute} from '@react-navigation/native';
-import {navigateChapter, RouteParams} from '../Navigator';
+import {navigateChapter, navigateLogin, RouteParams} from '../Navigator';
 
 interface Props {
   style: {};
@@ -41,6 +41,9 @@ class ContentView extends Component<ContextViewPros> {
           i am Content
         </Text>
         <Text>{this.props!.info}</Text>
+        <Text onPress={() => navigateLogin(this.props.navigation)}>
+          you has not login
+        </Text>
       </View>
     );
   }
