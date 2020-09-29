@@ -38,7 +38,7 @@ function App() {
         <Stack.Screen
           name="login"
           component={LoginScreen}
-          options={{title: 'Login or Register'}}
+          options={{title: 'Login'}}
         />
       </Stack.Navigator>
     </NavigationContainer>
