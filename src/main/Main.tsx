@@ -4,6 +4,7 @@ import TopNavigationBar from './TopBar';
 import RightBar from './RightBar';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {navigateChapter, navigateLogin, RouteParams} from '../Navigator';
+import ToastModule from '../android';
 
 interface Props {
   style: {};
@@ -40,7 +41,12 @@ class ContentView extends Component<ContextViewPros> {
         <Text onPress={() => navigateChapter(this.props.navigation)}>
           i am Content
         </Text>
-        <Text>{this.props!.info}</Text>
+        <Text
+          onPress={() => {
+            ToastModule.show('click me', 1000);
+          }}>
+          {this.props!.info}
+        </Text>
         <Text onPress={() => navigateLogin(this.props.navigation)}>
           you has not login
         </Text>
