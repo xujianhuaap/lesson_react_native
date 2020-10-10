@@ -49,9 +49,68 @@ class ChapterView extends Component<ChapterViewProps, ChapterViewState> {
             ? JSON.stringify(this.state.greenMileage)
             : '======='}
         </Text>
-        <View style={{backgroundColor: 'green', width: 400, height: 400}}>
-          <View>
+        <View
+          style={{
+            backgroundColor: 'green',
+            width: 400,
+            height: 400,
+            flexDirection: 'row',
+          }}>
+          <View style={{backgroundColor: 'orange', width: '10%', height: 400}}>
             <Text>1</Text>
+          </View>
+          <View
+            style={{
+              backgroundColor: 'red',
+              alignSelf: 'stretch',
+              alignItems: 'stretch',
+              width: '90%',
+              flexDirection: 'column',
+            }}>
+            <View
+              style={{
+                backgroundColor: 'green',
+                height: '10%',
+              }}>
+              <Text>2</Text>
+            </View>
+            <View
+              style={{
+                backgroundColor: 'red',
+                height: '90%',
+                flexDirection: 'row-reverse',
+                alignItems: 'stretch',
+              }}>
+              <View
+                style={{
+                  backgroundColor: 'purple',
+                  width: '20%',
+                }}>
+                <Text>3</Text>
+              </View>
+              <View
+                style={{
+                  backgroundColor: 'yellow',
+                  width: '80%',
+                  flexDirection: 'column-reverse',
+                  alignItems: 'stretch',
+                }}>
+                <View
+                  style={{
+                    backgroundColor: 'cyan',
+                    height: '90%',
+                  }}>
+                  <Text>4</Text>
+                </View>
+                <View
+                  style={{
+                    backgroundColor: 'blue',
+                    height: '10%',
+                  }}>
+                  <Text>5</Text>
+                </View>
+              </View>
+            </View>
           </View>
         </View>
       </View>
