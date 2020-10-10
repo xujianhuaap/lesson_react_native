@@ -3,8 +3,13 @@ import {Text, View, StyleSheet} from 'react-native';
 import TopNavigationBar from './TopBar';
 import RightBar from './RightBar';
 import {useNavigation, useRoute} from '@react-navigation/native';
-import {navigateChapter, navigateLogin, navigatePickImage, RouteParams} from '../Navigator';
-import ToastModule from '../android';
+import {
+  navigateChapter,
+  navigateLogin,
+  navigatePickImage,
+  RouteParams,
+} from '../Navigator';
+import Toast from '../react-native/toast/toast_android';
 
 interface Props {
   style: {};
@@ -43,7 +48,7 @@ class ContentView extends Component<ContextViewPros> {
         </Text>
         <Text
           onPress={() => {
-            ToastModule.show('click me', 1000);
+            Toast.show('click me', 1000);
           }}>
           {this.props!.info}
         </Text>

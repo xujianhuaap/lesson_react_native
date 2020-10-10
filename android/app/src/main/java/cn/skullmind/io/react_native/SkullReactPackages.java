@@ -24,6 +24,7 @@ public class SkullReactPackages implements ReactPackage {
         List<NativeModule> modules = new ArrayList<>();
 
         modules.add(new ToastModule(reactContext));
+        modules.add(new ImagePickModule(reactContext));
 
         return modules;
     }
