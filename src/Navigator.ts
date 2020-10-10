@@ -13,3 +13,7 @@ export function navigateChapter(navigation: any, params?: RouteParams) {
 export function navigateLogin(navigation: any, params?: RouteParams) {
   navigation.navigate('login', params);
 }
+
+export function navigatePickImage(navigation: any, params?: RouteParams) {
+  navigation.navigate('pick_image', params);
+}

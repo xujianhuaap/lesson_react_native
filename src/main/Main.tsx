@@ -3,7 +3,7 @@ import {Text, View, StyleSheet} from 'react-native';
 import TopNavigationBar from './TopBar';
 import RightBar from './RightBar';
 import {useNavigation, useRoute} from '@react-navigation/native';
-import {navigateChapter, navigateLogin, RouteParams} from '../Navigator';
+import {navigateChapter, navigateLogin, navigatePickImage, RouteParams} from '../Navigator';
 import ToastModule from '../android';
 
 interface Props {
@@ -49,6 +49,9 @@ class ContentView extends Component<ContextViewPros> {
         </Text>
         <Text onPress={() => navigateLogin(this.props.navigation)}>
           you has not login
+        </Text>
+        <Text onPress={() => navigatePickImage(this.props.navigation)}>
+          go to pick image
         </Text>
       </View>
     );

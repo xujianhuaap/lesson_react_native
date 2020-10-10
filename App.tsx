@@ -9,6 +9,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {MainScreen} from './src/main/Main';
 import {ChapterScreen} from './src/chapter/Chapter';
 import {LoginScreen} from './src/login/Login';
+import {PickImageScreen} from './src/pick_image/PickImage';
 
 const Stack = createStackNavigator();
 function App() {
@@ -39,6 +40,11 @@ function App() {
           name="login"
           component={LoginScreen}
           options={{title: 'Login'}}
+        />
+        <Stack.Screen
+          name="pick_image"
+          component={PickImageScreen}
+          options={{title: 'PickImage'}}
         />
       </Stack.Navigator>
     </NavigationContainer>
