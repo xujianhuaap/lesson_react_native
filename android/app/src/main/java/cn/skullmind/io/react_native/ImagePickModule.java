@@ -64,6 +64,13 @@ public class ImagePickModule extends ReactContextBaseJavaModule {
     }
 
 
+    /***
+     * 原生方法最后一个参数为Promise,对应的js下的方法返回值为Promise因此该方法如下
+     *
+     * interface ImagePick{
+     *     pickImage():Promise<string>;
+     * }
+     */
     @ReactMethod
     public void pickImage(final Promise promise) {
         Activity currentActivity = getCurrentActivity();

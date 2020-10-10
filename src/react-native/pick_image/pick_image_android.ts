@@ -1,5 +1,5 @@
 import {NativeModules} from 'react-native';
 interface ImagePick {
-  pickImage(): Promise<String>;
+  pickImage(): Promise<string>;
 }
 export default NativeModules.ImagePickModule as ImagePick;

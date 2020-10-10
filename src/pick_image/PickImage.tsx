@@ -10,7 +10,6 @@ interface PickImageViewState {
   uri: string;
 }
 
-
 class PickImageView extends React.Component<any, PickImageViewState> {
   constructor(props: Readonly<any>) {
     super(props);
@@ -33,7 +32,7 @@ class PickImageView extends React.Component<any, PickImageViewState> {
         <Text
           onPress={() => {
             ImagePick.pickImage().then((value: string) => {
-              this.setState({uri: value})
+              this.setState({uri: value});
             });
           }}>
           Pick ...

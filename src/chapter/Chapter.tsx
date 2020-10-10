@@ -43,10 +43,17 @@ class ChapterView extends Component<ChapterViewProps, ChapterViewState> {
             let handle = setTimeout(this.timerHandler, 300);
             this.setState({timerHandle: handle});
           }}>
-          {this !== null && this.state !== null && this.state.greenMileage !== undefined
+          {this !== null &&
+          this.state !== null &&
+          this.state.greenMileage !== undefined
             ? JSON.stringify(this.state.greenMileage)
             : '======='}
         </Text>
+        <View style={{backgroundColor: 'green', width: 400, height: 400}}>
+          <View>
+            <Text>1</Text>
+          </View>
+        </View>
       </View>
     );
   }
